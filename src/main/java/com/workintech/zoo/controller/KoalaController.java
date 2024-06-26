@@ -1,7 +1,9 @@
 package com.workintech.zoo.controller;
 
 import com.workintech.zoo.entity.Koala;
+import com.workintech.zoo.exceptions.ZooException;
 import jakarta.annotation.PostConstruct;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -24,9 +26,13 @@ public class KoalaController {
     }
 
     @GetMapping("/{id}")
-    public Koala getKoalaById(Long id) {
-        return koalas.get(id);
-    }//TODO maybe add a check for null here
+    public Koala getKoalaById(@PathVariable Long id) {
+        Koala koala = koalas.get(id);
+        if (koala == null) {
+            throw new ZooException("Koala not found", HttpStatus.NOT_FOUND);
+        }
+        return koala;
+    }
 
     @PostMapping
     public Koala addKoala(@RequestBody Koala koala) {
@@ -34,15 +40,21 @@ public class KoalaController {
         return koala;
     }
 
-    @PutMapping
-    public Koala updateKoala(@RequestBody Koala koala) {
-        koalas.put(koala.getId(), koala);
+    @PutMapping("/{id}")
+    public Koala updateKoala(@PathVariable Long id, @RequestBody Koala koala) {
+        if (!koalas.containsKey(id)) {
+            throw new ZooException("Koala not found", HttpStatus.NOT_FOUND);
+        }
+        koalas.put(id, koala);
         return koala;
-    }//TODO maybe add a check for null here
+    }
 
     @DeleteMapping("/{id}")
     public void deleteKoala(@PathVariable Long id) {
+        if (!koalas.containsKey(id)) {
+            throw new ZooException("Koala not found", HttpStatus.NOT_FOUND);
+        }
         koalas.remove(id);
-    }//TODO maybe add a check for null here
+    }
 
 }
