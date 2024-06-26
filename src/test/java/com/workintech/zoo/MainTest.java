@@ -133,20 +133,20 @@ class MainTest {
 
     }
 
-//    @Test
-//    @DisplayName("Test ZooErrorResponse AllArgsConstructor")
-//     void testAllArgsConstructor() {
-//
-//        long now = System.currentTimeMillis();
-//
-//
-//        ZooErrorResponse errorResponse = new ZooErrorResponse(404, "Not Found", now);
-//
-//
-//        assertEquals(404, errorResponse.getStatus());
-//        assertEquals("Not Found", errorResponse.getMessage());
-//        assertEquals(now, errorResponse.getTimestamp());
-//    }
+    @Test
+    @DisplayName("Test ZooErrorResponse AllArgsConstructor")
+     void testAllArgsConstructor() {
+
+        long now = System.currentTimeMillis();
+
+
+        ZooErrorResponse errorResponse = new ZooErrorResponse("Not Found", 404, now);
+
+
+        assertEquals(404, errorResponse.getStatus());
+        assertEquals("Not Found", errorResponse.getMessage());
+        assertEquals(now, errorResponse.getTimestamp());
+    }
 
     @Test
     @DisplayName("Test ZooException Creation")
