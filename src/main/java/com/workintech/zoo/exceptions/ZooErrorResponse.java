@@ -1,12 +1,11 @@
 package com.workintech.zoo.exceptions;
 
 public class ZooErrorResponse {
-
     private String message;
     private int status;
     private long timestamp;
 
-
+    public ZooErrorResponse() {}
 
     public ZooErrorResponse(String message, int status, long timestamp) {
         this.message = message;
@@ -14,7 +13,7 @@ public class ZooErrorResponse {
         this.timestamp = timestamp;
     }
 
-
+    // Getters and Setters
     public String getMessage() {
         return message;
     }
