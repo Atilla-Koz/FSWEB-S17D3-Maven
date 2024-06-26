@@ -168,10 +168,10 @@ class MainTest {
     @DisplayName("Test ZooException HttpStatus Setter")
     void testHttpStatusSetter() {
         ZooException exception = new ZooException("Initial message", HttpStatus.OK);
-        exception.setHttpStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+        exception.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
 
 
-        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, exception.getHttpStatus(), "The HttpStatus should be updatable and match the new value.");
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, exception.getStatus(), "The HttpStatus should be updatable and match the new value.");
     }
 
     @Test
