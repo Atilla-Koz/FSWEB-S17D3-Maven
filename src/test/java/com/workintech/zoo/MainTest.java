@@ -158,7 +158,7 @@ class MainTest {
 
 
         assertEquals(expectedMessage, exception.getMessage(), "The exception message should match the expected value.");
-        assertEquals(expectedStatus, exception.getHttpStatus(), "The HttpStatus should match the expected value.");
+        assertEquals(expectedStatus, exception.getStatus(), "The HttpStatus should match the expected value.");
 
 
         assertTrue(exception instanceof RuntimeException, "ZooException should be an instance of RuntimeException.");
